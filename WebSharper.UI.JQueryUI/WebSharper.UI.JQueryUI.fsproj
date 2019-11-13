@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
+    <WebSharperProject>Library</WebSharperProject>
+    <WebSharperSourceMap>false</WebSharperSourceMap>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Utils.fs" />
+    <Compile Include="Dependencies.fs" />
+    <Compile Include="Position.fs" />
+    <Compile Include="Accordion.fs" />
+    <Compile Include="Autocomplete.fs" />
+    <Compile Include="Button.fs" />
+    <Compile Include="Datepicker.fs" />
+    <Compile Include="Dialog.fs" />
+    <Compile Include="Menu.fs" />
+    <Compile Include="ProgressBar.fs" />
+    <Compile Include="Slider.fs" />
+    <Compile Include="Spinner.fs" />
+    <Compile Include="Tabs.fs" />
+    <Compile Include="Tooltip.fs" />
+    <Compile Include="Draggable.fs" />
+    <Compile Include="Droppable.fs" />
+    <Compile Include="Resizable.fs" />
+    <Compile Include="Selectable.fs" />
+    <Compile Include="Sortable.fs" />
+  </ItemGroup>
+  <Import Project="..\paket-files\wsbuild\github.com\dotnet-websharper\build-script\WebSharper.Fake.targets" Condition="Exists('..\paket-files\wsbuild\github.com\dotnet-websharper\build-script\WebSharper.Fake.targets')" />
+  <Import Project="..\.paket\Paket.Restore.targets" />
+</Project>

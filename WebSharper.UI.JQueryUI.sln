@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WebSharper.UI.JQueryUI", "WebSharper.UI.JQueryUI\WebSharper.UI.JQueryUI.fsproj", "{73C71E26-AC7C-4CC0-B021-A082FC9C0F21}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WebSharper.UI.JQueryUI.Tests", "WebSharper.UI.JQueryUI.Tests\WebSharper.UI.JQueryUI.Tests.fsproj", "{06D6B133-238F-4ADA-B9CF-AC9085814436}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{73C71E26-AC7C-4CC0-B021-A082FC9C0F21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73C71E26-AC7C-4CC0-B021-A082FC9C0F21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73C71E26-AC7C-4CC0-B021-A082FC9C0F21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73C71E26-AC7C-4CC0-B021-A082FC9C0F21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06D6B133-238F-4ADA-B9CF-AC9085814436}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06D6B133-238F-4ADA-B9CF-AC9085814436}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06D6B133-238F-4ADA-B9CF-AC9085814436}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06D6B133-238F-4ADA-B9CF-AC9085814436}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C313E76C-00D7-43F1-8C68-436A19B7419D}
+	EndGlobalSection
+EndGlobal

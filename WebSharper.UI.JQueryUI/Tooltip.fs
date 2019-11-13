@@ -1,0 +1,176 @@
+// $begin{copyright}
+//
+// This file is part of WebSharper
+//
+// Copyright (c) 2008-2018 IntelliFactory
+//
+// Licensed under the Apache License, Version 2.0 (the "License"); you
+// may not use this file except in compliance with the License.  You may
+// obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+// implied.  See the License for the specific language governing
+// permissions and limitations under the License.
+//
+// $end{copyright}
+
+//JQueryUI Wrapping: (version Stable 1.8rc1)
+namespace WebSharper.UI.JQueryUI
+
+open WebSharper
+open WebSharper.JavaScript
+open WebSharper.UI
+open WebSharper.UI.Html
+
+type TooltipConfiguration[<JavaScript>] () =
+
+    [<Name "content">]
+    [<Stub>]
+    //null by default
+    member val Content = Unchecked.defaultof<string> with get, set
+
+    [<Name "content">]
+    [<Stub>]
+    //null by default
+    member val ContentFunction = Unchecked.defaultof<(string -> unit) -> unit> with get, set
+
+    [<Name "disabled">]
+    [<Stub>]
+    member val Disabled = Unchecked.defaultof<bool> with get, set
+
+    [<Name "hide">]
+    [<Stub>]
+    //null by default
+    member val Hide = Unchecked.defaultof<string> with get, set
+
+    [<Name "items">]
+    [<Stub>]
+    member val Items = Unchecked.defaultof<string> with get, set
+
+    [<Name "position">]
+    [<Stub>]
+    //"center" by default
+    member val Position = Unchecked.defaultof<PositionConfiguration> with get, set
+
+    [<Name "show">]
+    [<Stub>]
+    //null by default
+    member val Show = Unchecked.defaultof<string> with get, set
+
+    [<Name "tooltipClass">]
+    [<Stub>]
+    //null by default
+    member val TooltipClass = Unchecked.defaultof<string> with get, set
+
+    [<Name "track">]
+    [<Stub>]
+    member val Track = Unchecked.defaultof<bool> with get, set
+
+module internal TooltipInternal =
+    [<Inline "jQuery($el).tooltip($conf)">]
+    let Init(el: Dom.Element, conf: TooltipConfiguration) = ()
+
+
+[<Require(typeof<Dependencies.JQueryUIJs>)>]
+[<Require(typeof<Dependencies.JQueryUICss>)>]
+type Tooltip[<JavaScript>] internal () =
+    inherit Utils.Pagelet()
+
+    (****************************************************************
+    * Constructors
+    *****************************************************************)
+    /// Creates a new tooltip given a configuration object.
+    [<JavaScript>]
+    [<Name "New1">]
+    static member New (conf: TooltipConfiguration): Tooltip =
+        let s = new Tooltip()
+        s.element <-
+            (div [] [] :?> Elt)
+                .OnAfterRender (fun el  ->
+                    TooltipInternal.Init(el, conf)
+                )
+        s
+
+    /// Creates a new tooltip using the default configuration
+    /// settings.
+    [<JavaScript>]
+    [<Name "New2">]
+    static member New (): Tooltip =
+        Tooltip.New (new TooltipConfiguration())
+
+    (****************************************************************
+    * Methods
+    *****************************************************************)
+    /// Removes the tooltip functionality completly.
+    [<Inline "jQuery($this.element.elt).tooltip('destroy')">]
+    member this.Destroy() = ()
+
+    /// Disables the tooltip functionality.
+    [<Inline "jQuery($this.element.elt).tooltip('disable')">]
+    member this.Disable () = ()
+
+    /// Enables the tooltip functionality.
+    [<Inline "jQuery($this.element.elt).tooltip('enable')">]
+    member this.Enable () = ()
+
+    /// Sets a tooltip option.
+    [<Inline "jQuery($this.element.elt).tooltip('option', $name, $value)">]
+    member this.Option (name: string, value: obj) = ()
+
+    /// Gets a tooltip option.
+    [<Inline "jQuery($this.element.elt).tooltip('option', $name)">]
+    member this.Option (name: string) = X<obj>
+
+    [<Inline "jQuery($this.element.elt).tooltip('widget')">]
+    member private this.getWidget () = X<Dom.Element>
+
+    /// Returns the .ui-tooltip element.
+    [<JavaScript>]
+    member this.Widget = this.getWidget()
+
+    /// Closes the tooltip.
+    [<Inline "jQuery($this.element.elt).tooltip('close')">]
+    member this.Close () = ()
+
+    /// Opens the tooltip.
+    [<Inline "jQuery($this.element.elt).tooltip('open')">]
+    member this.Open () = ()
+
+    (****************************************************************
+    * Events
+    *****************************************************************)
+
+    [<Inline "jQuery($this.element.elt).bind('tooltipcreate', function (x,y) {$f(x);})">]
+    member private this.onCreate(f : JQuery.Event -> unit) = ()
+
+
+    [<Inline "jQuery($this.element.elt).bind('tooltipclose', function (x,y) {$f(x);})">]
+    member private this.onClose(f : JQuery.Event -> unit) = ()
+
+
+    [<Inline "jQuery($this.element.elt).bind('tooltipopen', function (x,y) {$f(x);})">]
+    member private this.onOpen(f : JQuery.Event -> unit) = ()
+
+
+
+    /// Event triggered when the tooltip is closed, triggered on focusout or mouseleave.
+    [<JavaScript>]
+    member this.OnClose(f : JQuery.Event -> unit) =
+        this.OnAfterRender (fun _ -> this.onClose f) |> ignore
+
+    /// Event triggered when the tooltip is opened.
+    [<JavaScript>]
+    member this.OnOpen(f : JQuery.Event -> unit) =
+        this.OnAfterRender (fun _ -> this.onOpen f) |> ignore
+
+
+
+
+
+
+
+
